@@ -1,34 +1,23 @@
 <div align="center">
 	<img src="assets/hero.svg" alt="Find Your Niche: find anything of the same interest across movies, books, music, and open source" width="100%">
 	<br>
-	<strong>A cross-medium discovery app that finds the connections between your interests.</strong>
+	<strong>Explore RAG, agentic AI, and the ideas around them.</strong>
 	<br>
-	Movies &amp; TV, books, music, and open-source projects, brought together in one evolving taste map.
+	Search real AI repositories, books, films, and music; follow the connections between them.
 	<br><br>
-	<a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&amp;logo=next.js" alt="Next.js 15"></a>
-	<a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.7-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="TypeScript 5.7"></a>
-	<a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-149ECA?style=flat-square&amp;logo=react&amp;logoColor=white" alt="React 19"></a>
-	<a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/PostgreSQL-optional-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white" alt="Optional PostgreSQL"></a>
-	<a href="#development"><img src="https://img.shields.io/badge/tests-tsx%20--test-d3f28a?style=flat-square&amp;labelColor=0a0c0b" alt="Tests use tsx"></a>
-	<br><br>
-	<a href="#overview">Overview</a> ·
-	<a href="#features">Features</a> ·
-	<a href="#how-discovery-works">How it works</a> ·
-	<a href="#your-taste-data">Taste data</a> ·
-	<a href="#getting-started">Getting started</a> ·
+	<a href="#rag-and-agentic-ai">RAG &amp; agentic AI</a> ·
+	<a href="#how-discovery-works">Discovery pipeline</a> ·
+	<a href="#getting-started">Get started</a> ·
 	<a href="#configuration">Configuration</a>
 </div>
 
 ## Overview
 
-Most discovery tools treat every search as a separate lookup. **Find Your Niche** treats a search as a signal: describe what you like, explore real catalog results, and follow shared themes into another medium.
+**Find Your Niche** is a retrieval-first discovery app. Search for a RAG framework, an agentic AI project, a film, or a book; inspect real catalog results, then follow shared concepts into another domain.
 
-Try *"movies like Heat, but darker"*. The query is interpreted as a seed title, crime and noir-related concepts, and a mood modifier. Those signals guide retrieval and ranking; they do not turn a mood into an invented catalog fact. Save, like, or rate discoveries to build a taste profile that can connect films to books, music, and open-source projects.
+For AI topics, search GitHub for repositories and explore a curated RAG shelf spanning frameworks, vector search, GraphRAG, and books. Optional PostgreSQL and `pgvector` add lexical and embedding-based retrieval over cached catalog records. The same search pipeline works across movies and TV, books, and music.
 
-- **One search across four catalogs.** Search movies and TV, books, music, or code, or let the app route a query from its wording.
-- **Recommendations with context.** Results include catalog metadata and signals that explain why an item matched.
-- **Real sources, no fabricated catalog entries.** Results come from external catalogs; the app does not make up titles when a source has no match.
-- **Useful without an account.** Search, starter discoveries, and a browser-local taste map work without database setup.
+The app uses optional language-model intent parsing, but retrieval and ranking remain bounded and inspectable. It is **not** a private-document RAG service or an autonomous AI agent: it does not ingest user files or run an LLM-directed tool loop.
 
 ## Features
 
@@ -36,6 +25,8 @@ Try *"movies like Heat, but darker"*. The query is interpreted as a seed title, 
 | --- | --- |
 | Exploration sphere | Interactive home screen with a natural-language search and starter discoveries. |
 | Cross-catalog search | Search Movies & TV, Books, Music, or Code; use All to route by query cues. |
+| RAG topic discovery | Curated projects and books covering retrieval, vector search, hybrid retrieval, and GraphRAG. |
+| Agentic AI project search | Find public GitHub repositories by topic, language, and experience level. Search results are catalog-backed; the app itself is not an autonomous agent. |
 | Structured filters | Refine supported searches by catalog-specific metadata such as language, region, genre, year, runtime, or experience level. |
 | Ranked discovery cards | Browse normalized results with artwork, catalog details, links, and match context. |
 | Taste map | Save, like, skip, or rate results; recurring metadata signals shape future discovery. |
@@ -60,11 +51,12 @@ Region and industry labels such as Hollywood, Bollywood, and South Indian are re
 
 | Query | Possible interpretation |
 | --- | --- |
+| `RAG frameworks for Python` | GitHub projects and curated retrieval resources |
+| `agentic AI projects for beginners` | Repository search with language or experience filters |
+| `GraphRAG vs vector search` | Searchable projects and resources related to both approaches |
 | `movies like Heat, but darker` | Heat as a seed, with crime/noir and darker-tone retrieval signals |
 | `books like Dune` | Related books using catalog subjects and seed metadata |
 | `songs like Radiohead` | Music discovery using artist relationships and track metadata |
-| `beginner Python RAG projects` | GitHub repository search with language and experience cues |
-| `music for late-night reading` | Music discovery guided by activity and mood concepts |
 
 </details>
 
@@ -84,6 +76,22 @@ Region and industry labels such as Hollywood, Bollywood, and South Indian are re
 
 Search intent includes `SEARCH`, `SIMILAR`, `FILTERED_SIMILAR`, `DISCOVER`, `RECOMMEND`, `CROSS_DOMAIN`, `PERSONALIZED`, `ENTITY_LOOKUP`, and `PEOPLE_SEARCH`. A modifier such as “darker” is treated as a retrieval/ranking signal, not as a factual genre label.
 
+## RAG and agentic AI
+
+### RAG: both a topic and an optional retrieval technique
+
+Ask about RAG to open a curated path through LangChain, LlamaIndex, FAISS, GraphRAG, and selected books. Search for related repositories directly in the Code catalog.
+
+When PostgreSQL and OpenRouter embeddings are configured, catalog records can be cached with 1,536-dimensional vectors. Search can retrieve cached records by full-text match or vector similarity, then rerank the combined candidates using metadata and query signals. Without those optional services, provider search and deterministic ranking still work.
+
+This is catalog retrieval, not document RAG: there is no user-file ingestion, chunking, permission-aware document index, or answer-with-citations workflow. The chat's RAG answer explains the pattern; it does not answer questions over private documents.
+
+### Agentic AI: discover the tools, not a fictional agent
+
+Use the Code catalog to search public repositories for agents, tool use, orchestration, and related topics. The current app routes a request through validated intent, a selected catalog adapter, and deterministic ranking. OpenRouter can help structure intent and chat responses, but it does not control an autonomous planning loop or call arbitrary tools.
+
+That boundary is deliberate: results come from known catalog providers, while optional model output is constrained to validated fields or grounded candidate evidence.
+
 ## Your taste data
 
 The app supports a useful local mode and optional persistent features. Local data is not uploaded unless the database-backed features are configured.
@@ -102,7 +110,7 @@ Taste Bridge connections are derived from metadata shared across saved discoveri
 
 Chat responds in a bounded sequence: built-in answers, personal taste signals when available, curated cross-domain suggestions, real catalog search for discovery questions, and finally the optional reasoning model for open-ended questions. If a catalog lookup cannot be verified, the app says so rather than presenting an invented result.
 
-The built-in RAG response is an educational explanation of retrieval-augmented generation. The app does not ingest private documents or provide question-answering over a user's files.
+For RAG and agentic AI topics, chat can return curated learning paths and repository searches. It does not ingest private documents or run arbitrary agent tools.
 
 ## Architecture
 
