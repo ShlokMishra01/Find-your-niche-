@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-labelledby="title description">
+  <title id="title">How search works</title>
+  <desc id="description">A query is interpreted, searched across real catalogs, normalized, ranked, and returned. Likes, saves, and ratings feed the taste profile.</desc>
+  <style>
+    .node { fill: #131916; stroke: #ffffff24; stroke-width: 1; animation: breathe 5s ease-in-out infinite; }
+    .flow { fill: none; stroke: #d3f28a; stroke-opacity: .68; stroke-width: 2; stroke-dasharray: 6 8; animation: dash 1.3s linear infinite; }
+    .feedback { fill: none; stroke: #7fd1b9; stroke-opacity: .62; stroke-width: 2; stroke-dasharray: 6 8; animation: dash 1.3s linear infinite; }
+    .label { fill: #f2f5ef; font: 700 19px Inter,-apple-system,'Segoe UI',sans-serif; }
+    .detail { fill: #8d9a92; font: 13px Inter,-apple-system,'Segoe UI',sans-serif; }
+    @keyframes dash { to { stroke-dashoffset: -28; } }
+    @keyframes breathe { 0%, 100% { stroke: #ffffff24; } 50% { stroke: #d3f28a88; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0l10 5-10 5z" fill="#d3f28a"/>
+    </marker>
+    <marker id="feedback-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0l10 5-10 5z" fill="#7fd1b9"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="300" rx="18" fill="#0a0c0b"/>
+
+  <path class="flow" d="M230 136h28" marker-end="url(#arrow)"/>
+  <path class="flow" d="M428 136h28" marker-end="url(#arrow)"/>
+  <path class="flow" d="M626 136h28" marker-end="url(#arrow)"/>
+  <path class="flow" d="M824 136h28" marker-end="url(#arrow)"/>
+  <path class="flow" d="M1022 136h28" marker-end="url(#arrow)"/>
+
+  <g style="animation-delay:0s">
+    <rect class="node" x="60" y="80" width="170" height="112" rx="14"/>
+    <text class="label" x="145" y="120" text-anchor="middle">Query</text>
+    <text class="detail" x="145" y="148" text-anchor="middle">natural language</text>
+    <text x="74" y="68" fill="#5d6b63" font-family="Inter, sans-serif" font-size="12">01</text>
+  </g>
+  <g style="animation-delay:.6s">
+    <rect class="node" x="258" y="80" width="170" height="112" rx="14"/>
+    <text class="label" x="343" y="120" text-anchor="middle">Intent</text>
+    <text class="detail" x="343" y="148" text-anchor="middle">parse and route</text>
+    <text x="272" y="68" fill="#5d6b63" font-family="Inter, sans-serif" font-size="12">02</text>
+  </g>
+  <g style="animation-delay:1.2s">
+    <rect class="node" x="456" y="80" width="170" height="112" rx="14"/>
+    <text class="label" x="541" y="116" text-anchor="middle">Catalogs</text>
+    <text class="detail" x="541" y="140" text-anchor="middle">TMDB · Open Library</text>
+    <text class="detail" x="541" y="158" text-anchor="middle">Apple · MusicBrainz</text>
+    <text class="detail" x="541" y="176" text-anchor="middle">GitHub</text>
+    <text x="470" y="68" fill="#5d6b63" font-family="Inter, sans-serif" font-size="12">03</text>
+  </g>
+  <g style="animation-delay:1.8s">
+    <rect class="node" x="654" y="80" width="170" height="112" rx="14"/>
+    <text class="label" x="739" y="120" text-anchor="middle">Normalize</text>
+    <text class="detail" x="739" y="148" text-anchor="middle">common shape</text>
+    <text class="detail" x="739" y="168" text-anchor="middle">deduplicate</text>
+    <text x="668" y="68" fill="#5d6b63" font-family="Inter, sans-serif" font-size="12">04</text>
+  </g>
+  <g style="animation-delay:2.4s">
+    <rect class="node" x="852" y="80" width="170" height="112" rx="14"/>
+    <text class="label" x="937" y="120" text-anchor="middle">Rerank</text>
+    <text class="detail" x="937" y="148" text-anchor="middle">relevance · mood</text>
+    <text class="detail" x="937" y="168" text-anchor="middle">taste · novelty</text>
+    <text x="866" y="68" fill="#5d6b63" font-family="Inter, sans-serif" font-size="12">05</text>
+  </g>
+  <g style="animation-delay:3s">
+    <rect class="node" x="1050" y="80" width="170" height="112" rx="14"/>
+    <text class="label" x="1135" y="120" text-anchor="middle">Results</text>
+    <text class="detail" x="1135" y="148" text-anchor="middle">cards and match context</text>
+    <text x="1064" y="68" fill="#5d6b63" font-family="Inter, sans-serif" font-size="12">06</text>
+  </g>
+
+  <path class="feedback" d="M1135 192v53H343v-53" marker-end="url(#feedback-arrow)"/>
+  <rect x="570" y="230" width="338" height="30" rx="15" fill="#0a0c0b" stroke="#7fd1b9" stroke-opacity=".5"/>
+  <text x="739" y="250" text-anchor="middle" fill="#7fd1b9" font-family="Inter,-apple-system,'Segoe UI',sans-serif" font-size="13">like &#183; save &#183; rate &#8594; taste profile</text>
+</svg>
