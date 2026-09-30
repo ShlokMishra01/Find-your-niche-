@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="144" viewBox="0 0 1280 144" role="img" aria-labelledby="title description">
+  <title id="title">From intent to discovery</title>
+  <desc id="description">A looping signal moves through validated intent, catalog retrieval, and discovery of RAG and agent tooling.</desc>
+  <style>
+    .track { fill: none; stroke: #d3f28a; stroke-opacity: .5; stroke-width: 1.5; stroke-dasharray: 4 9; animation: drift 1.5s linear infinite; }
+    .step { fill: #0a0c0b; stroke: #7b8a78; stroke-width: 1.5; }
+    .signal { fill: #d3f28a; filter: drop-shadow(0 0 5px #d3f28a99); }
+    .stage { fill: #f2f5ef; font: 600 15px Inter,-apple-system,'Segoe UI',sans-serif; letter-spacing: 1.2px; }
+    .detail { fill: #9aa69e; font: 13px Inter,-apple-system,'Segoe UI',sans-serif; }
+    @keyframes drift { to { stroke-dashoffset: -26; } }
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation: none; }
+      .signal { display: none; }
+    }
+  </style>
+  <rect width="1280" height="144" rx="14" fill="#0a0c0b"/>
+  <path class="track" d="M120 45H1160"/>
+  <circle class="signal" r="4">
+    <animateMotion dur="7s" repeatCount="indefinite" path="M120 45H1160"/>
+  </circle>
+
+  <g transform="translate(270 45)">
+    <circle class="step" r="8"/>
+    <text class="stage" x="0" y="38" text-anchor="middle">VALIDATED INTENT</text>
+    <text class="detail" x="0" y="59" text-anchor="middle">query parsed and routed</text>
+  </g>
+  <g transform="translate(640 45)">
+    <circle class="step" r="8"/>
+    <text class="stage" x="0" y="38" text-anchor="middle">RETRIEVAL</text>
+    <text class="detail" x="0" y="59" text-anchor="middle">catalogs · optional pgvector</text>
+  </g>
+  <g transform="translate(1010 45)">
+    <circle class="step" r="8"/>
+    <text class="stage" x="0" y="38" text-anchor="middle">DISCOVERY</text>
+    <text class="detail" x="0" y="59" text-anchor="middle">RAG · agents · adjacent ideas</text>
+  </g>
+</svg>

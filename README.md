@@ -11,6 +11,10 @@
 	<a href="#configuration">Configuration</a>
 </div>
 
+<div align="center">
+	<img src="assets/ai-thread.svg" alt="Animated signal from validated intent through catalog retrieval to RAG and agentic AI discovery" width="100%">
+</div>
+
 ## Overview
 
 **Find Your Niche** is a retrieval-first discovery app. Search for a RAG framework, an agentic AI project, a film, or a book; inspect real catalog results, then follow shared concepts into another domain.
